@@ -45,16 +45,21 @@ module.exports = webpackConfig;
 ## Status Colors
 
 **Connected and Idle**
-<div style="border-top: 2px solid #39d183"/>
+
+![image](https://user-images.githubusercontent.com/1018196/35707733-d6498000-075f-11e8-8840-98ca5d46e825.png)
 
 **Disconnected**
-<div style="border-top: 2px solid #9bacbf"/>
+
+![image](https://user-images.githubusercontent.com/1018196/35707761-e6213a4a-075f-11e8-9231-fe6c4dc0d12d.png)
 
 **Detected change and compiling**
-<div style="border-top: 2px solid #a081ea"/>
+
+![image](https://user-images.githubusercontent.com/1018196/35707782-f8b8b1c4-075f-11e8-97dd-7f8b561b9d78.png)
 
 **Compiled with warnings**
-<div style="border-top: 2px solid #dd731d"/>
+
+![image](https://user-images.githubusercontent.com/1018196/35707794-0698e5de-0760-11e8-850b-a466f3d20f4b.png)
 
 **Compiled with errors**
-<div style="border-top: 2px solid #e4567b"/>
+
+![image](https://user-images.githubusercontent.com/1018196/35707809-14e12926-0760-11e8-9f67-af1eff6048ae.png)
