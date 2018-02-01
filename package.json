@@ -1,0 +1,24 @@
+{
+  "name": "webpack-dev-server-status-bar",
+  "version": "1.0.0",
+  "description": "Shows webpack status as a thin colored bar on top of browser page",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mixpanel/webpack-dev-server-status-bar.git"
+  },
+  "keywords": [
+    "webpack",
+    "dev server",
+    "status",
+    "bar"
+  ],
+  "author": "dev@mixpanel.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mixpanel/webpack-dev-server-status-bar/issues"
+  },
+  "homepage": "https://github.com/mixpanel/webpack-dev-server-status-bar#readme"
+}
