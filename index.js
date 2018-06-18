@@ -3,15 +3,15 @@ const webpackEventColors = {
   invalid: `#a081ea`, // purple (compiling)
   warnings: `#dd731d`, // orange
   errors: `#e4567b`, // red
-  close: `#9bacbf`, // grey (socket disconnected),
-  ...window.__webpackEventColors__
+  close: `#9bacbf`, // grey (socket disconnected)
 };
+Object.assign(webpackEventColors, window.__webpackEventColors__);
 
 const webpackEventStyles = {
 	border: `2px solid`,
-	borderColor: '{webpackEventColor}',
-	...window.__webpackEventStyles__
+	borderColor: '{webpackEventColor}'
 };
+Object.assign(webpackEventStyles, window.__webpackEventStyles__);
 
 const webpackEventElem = window.__webpackEventElem__ || document.body;
 
