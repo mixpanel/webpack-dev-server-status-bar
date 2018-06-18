@@ -72,6 +72,7 @@ See `index.js` for examples.
 - `window.__webpackEventStyles__` [Object] Override default CSS.
 - `window.__webpackEventElem__` [DOMElement] DOM Element to apply the style on. Default: `body`.
 - `{webpackEventColor}` Use this placeholder in your CSS rules.
+- `[data-webpack-status]` Attribute to be used with CSS selectors. See colors objects for available values.
 
 Please note that if you want to keep away custom configs from your production codebase, than you should add
 these inside your own modules.

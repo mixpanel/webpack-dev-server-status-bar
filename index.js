@@ -23,6 +23,8 @@ window.addEventListener(`message`, event => {
     const webpackEvent = eventType.substr(webpackPrefix.length).toLowerCase();
 	const styles = renderStyles(webpackEventStyles, webpackEventColors[webpackEvent]);
     Object.assign(webpackEventElem.style, styles);
+    // Using setAttribute instead of dataset to support [data-*] selectors
+	webpackEventElem.setAttribute(`data-webpack-status`, webpackEvent);
   }
 });
 
