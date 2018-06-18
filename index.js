@@ -8,7 +8,8 @@ const webpackEventColors = {
 Object.assign(webpackEventColors, window.__webpackEventColors__);
 
 const webpackEventStyles = {
-	border: `2px solid`,
+	borderWidth: `2px 0 0 0`,
+	borderStyle: `solid`,
 	borderColor: '{webpackEventColor}'
 };
 Object.assign(webpackEventStyles, window.__webpackEventStyles__);
