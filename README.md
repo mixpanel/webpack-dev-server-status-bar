@@ -29,7 +29,7 @@ const webpackConfig = {
     rules: [
       // <loader rules here>
     ]
-  }
+  },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
   ]
@@ -63,3 +63,27 @@ module.exports = webpackConfig;
 **Compiled with errors**
 
 ![image](https://user-images.githubusercontent.com/1018196/35707809-14e12926-0760-11e8-9f67-af1eff6048ae.png)
+
+## Customizing
+
+See `index.js` for examples.
+
+- `window.__webpackEventColors__` [Object] Override default colors.
+- `window.__webpackEventStyles__` [Object] Override default CSS.
+- `window.__webpackEventElem__` [DOMElement] DOM Element to apply the style on. Default: `body`.
+- `{webpackEventColor}` Use this placeholder in your CSS rules.
+- `[data-webpack-status]` Attribute to be used with CSS selectors. See colors objects for available values.
+
+Please note that if you want to keep away custom configs from your production codebase, than you should add
+these inside your own modules.
+
+```js
+// In webpack config
+if (isDevServer) {
+  webpackConfig.entry.app.push(`./src/webpackStatusBar`);
+}
+
+// ./src/webpackStatusBar
+window.__webpackEventColors__ = { ... };
+require(`webpack-dev-server-status-bar`);
+```
