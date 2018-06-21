@@ -4,7 +4,7 @@
   "description": "Shows webpack status as a thin colored bar on top of browser page",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint index.js"
+    "lint": "eslint index.js && tsc"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/mixpanel/webpack-dev-server-status-bar#readme",
   "devDependencies": {
     "eslint": "4.18.1",
-    "eslint-config-mixpanel": "3.5.0"
+    "eslint-config-mixpanel": "3.5.0",
+    "typescript": "2.9.2"
   }
 }

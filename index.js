@@ -1,9 +1,11 @@
-// @ts-check
+/** @type {any} cast to any so tsc doesn't complain about special window vars*/
+const global = window;
+
 /** @type {string} */
-const webpackStatusElemId = window[`__webpackStatusElemId__`] || `__webpack_status_bar__`;
+const webpackStatusElemId = global.__webpackStatusElemId__ || `__webpack_status_bar__`;
 
 /** @type {HTMLElement} */
-let webpackStatusElem = window[`__webpackStatusElem__`] || document.getElementById(webpackStatusElemId);
+let webpackStatusElem = global.__webpackStatusElem__ || document.getElementById(webpackStatusElemId);
 
 /** @type {{[color: string]: string}} */
 const webpackStatusColors = Object.assign({
@@ -13,7 +15,7 @@ const webpackStatusColors = Object.assign({
   errors: `#e4567b`, // red
   close: `#9bacbf`, // grey (socket disconnected)
   progress: `#39d1cf`, // aqua
-}, window[`__webpackStatusColors__`]);
+}, global.__webpackStatusColors__);
 
 /**
  * @typedef {object} WebpackStatus
@@ -38,7 +40,7 @@ function getWebpackStatusStyle(status) {
 }
 
 /** @type {(status: WebpackStatus) => WebpackStatusStyle} */
-const webpackStatusStyleFunction = window[`__webpackStatusStyleFunction__`] || getWebpackStatusStyle;
+const webpackStatusStyleFunction = global.__webpackStatusStyleFunction__ || getWebpackStatusStyle;
 
 
 // webpack-dev-server sends messages with `webpack` prefix via postMessage
