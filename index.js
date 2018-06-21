@@ -30,10 +30,12 @@ const webpackStatusColors = Object.assign({
  * @returns {WebpackStatusStyle} - a styles property bag
  */
 function getWebpackStatusStyle(status) {
+  // mobile devices don't deal well with position: fixed, fallback to absolute if it looks like touch device
+  const position = window.navigator.maxTouchPoints > 0 ? `absolute`: `fixed`;
   return {
     backgroundColor: `${status.color}`,
     height: `2px`,
-    position: `fixed`,
+    position,
     top: `0px`,
     width: `${status.progress}vw`,
   };
