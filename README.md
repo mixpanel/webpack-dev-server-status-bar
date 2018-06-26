@@ -1,3 +1,8 @@
+[![licence](https://img.shields.io/npm/l/webpack-dev-server-status-bar.svg?maxAge=2592000)](https://github.com/nojvek/webpack-dev-server-status-bar)
+[![npm version](https://img.shields.io/npm/v/webpack-dev-server-status-bar.svg)](https://www.npmjs.com/package/webpack-dev-server-status-bar)
+[![npm total downloads](https://img.shields.io/npm/dt/webpack-dev-server-status-bar.svg?maxAge=2592000)](https://www.npmjs.com/package/webpack-dev-server-status-bar)
+
+
 # Webpack dev server status bar
 
 when webpack status changes from idle -> compiling -> error / warning,
