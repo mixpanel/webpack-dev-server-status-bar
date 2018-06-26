@@ -66,7 +66,7 @@ module.exports = webpackConfig;
 
 ## Customizing
 
-See `index.js` for examples.
+See `index.js` for how they are used.
 
 - `window.__webpackEventColors__` [Object] Override default colors.
 - `window.__webpackEventStyles__` [Object] Override default CSS.
@@ -76,6 +76,8 @@ See `index.js` for examples.
 
 Please note that if you want to keep away custom configs from your production codebase, than you should add
 these inside your own modules.
+
+### Custom example
 
 ```js
 // In webpack config
