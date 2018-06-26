@@ -68,16 +68,15 @@ module.exports = webpackConfig;
 
 See `index.js` for how they are used.
 
+- `window.__webpackStatusElem__` [HTMLElement] Element to apply the style on. Default is top level `div#__webpack_status_bar__`. 
 - `window.__webpackEventColors__` [Object] Override default colors.
-- `window.__webpackEventStyles__` [Object] Override default CSS.
-- `window.__webpackEventElem__` [DOMElement] DOM Element to apply the style on. Default: `body`.
-- `{webpackEventColor}` Use this placeholder in your CSS rules.
+- `window.__webpackStatusStyleFunction__` [Function] Compute custom css style based on status
 - `[data-webpack-status]` Attribute to be used with CSS selectors. See colors objects for available values.
 
 Please note that if you want to keep away custom configs from your production codebase, than you should add
 these inside your own modules.
 
-### Custom example
+### Customization example
 
 ```js
 // In webpack config
@@ -86,6 +85,31 @@ if (isDevServer) {
 }
 
 // ./src/webpackStatusBar
-window.__webpackEventColors__ = { ... };
+window.__webpackStatusElem__ = document.getElementById('my-webpack-status-bar');
+
+window.__webpackStatusColors__ = {
+  ok: `#0000ff`, // very green
+  errors: `#ff0000`, // as red as red can be
+  // see index.js for event names and colors
+};
+
+/**
+ * @typedef {object} WebpackStatus
+ * @prop {string} event - name of event e.g `ok`, `invalid` `warnings` e.t.c
+ * @prop {string} color - css color from webpackStatusColors
+ * @prop {number} progress - progress percentage if event is `progress` else 100
+ * @prop {string} message - a progress message e.g `compiling`, `emitting` e.t.c
+ *
+ * @param {WebpackStatus} status
+ * @returns {{[prop: string]: any}} - a styles property bag
+ */
+window.__webpackStatusStyleFunction__ = status => ({
+  border: `1px solid ${status.color}`,
+  position: `absolute`,
+  top: `0px`,
+  width: `${status.progress}vw`,
+  content: status.event,
+})
+
 require(`webpack-dev-server-status-bar`);
 ```
