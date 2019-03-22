@@ -38,7 +38,7 @@ function getWebpackStatusStyle(status) {
     position,
     top: `0px`,
     width: `${status.progress}vw`,
-    zIndex: 1000,
+    zIndex: 2147483647, // max z-index :)
   };
 }
 
