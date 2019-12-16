@@ -55,15 +55,16 @@ function waitForBody() {
     if (document.body) {
       resolve(document.body);
     } else {
-      const readyStateChangeListener = (/** @type {ProgressEvent<Document>} */ev) => {
-        if (ev.target && ev.target.readyState === 'interactive') {
+      /** @type {(ev: any) => void} */
+      const readyStateChangeListener = ev => {
+        if (ev.target.readyState === `interactive`) {
           document.removeEventListener(`readystatechange`, readyStateChangeListener);
           resolve(document.body);
         }
-      }
+      };
       document.addEventListener(`readystatechange`, readyStateChangeListener);
     }
-  })
+  });
 }
 
 // webpack-dev-server sends messages with `webpack` prefix via postMessage
