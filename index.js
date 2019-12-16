@@ -4,7 +4,7 @@ const global = window;
 /** @type {string} */
 const webpackStatusElemId = global.__webpackStatusElemId__ || `__webpack_status_bar__`;
 
-/** @type {HTMLElement} */
+/** @type {HTMLElement | null} */
 let webpackStatusElem = global.__webpackStatusElem__ || document.getElementById(webpackStatusElemId);
 
 /** @type {{[color: string]: string}} */
@@ -45,6 +45,26 @@ function getWebpackStatusStyle(status) {
 /** @type {(status: WebpackStatus) => WebpackStatusStyle} */
 const webpackStatusStyleFunction = global.__webpackStatusStyleFunction__ || getWebpackStatusStyle;
 
+/**
+ * if this is executed as part of a script in <head>, then body may not be initialized
+ * wait for ready state to be interactive, which means html is parsed and document.body is available
+ * @returns {Promise<HTMLElement>}
+ */
+function waitForBody() {
+  return new Promise(resolve => {
+    if (document.body) {
+      resolve(document.body);
+    } else {
+      const readyStateChangeListener = (/** @type {ProgressEvent<Document>} */ev) => {
+        if (ev.target && ev.target.readyState === 'interactive') {
+          document.removeEventListener(`readystatechange`, readyStateChangeListener);
+          resolve(document.body);
+        }
+      }
+      document.addEventListener(`readystatechange`, readyStateChangeListener);
+    }
+  })
+}
 
 // webpack-dev-server sends messages with `webpack` prefix via postMessage
 // we handle the message and display a status bar on the top of the page
@@ -62,7 +82,8 @@ window.addEventListener(`message`, event => {
     if (!webpackStatusElem) {
       webpackStatusElem = document.createElement(`div`);
       webpackStatusElem.setAttribute(`id`, webpackStatusElemId);
-      document.body.appendChild(webpackStatusElem);
+      // @ts-ignore Argument of type 'HTMLElement | null' is not assignable to type Node (we've already done falsey check)
+      waitForBody().then(body => body.appendChild(webpackStatusElem));
     }
 
     // assign computed style to status bar
