@@ -4,7 +4,7 @@ const global = window;
 /** @type {string} */
 const webpackStatusElemId = global.__webpackStatusElemId__ || `__webpack_status_bar__`;
 
-/** @type {HTMLElement | null} */
+/** @type {HTMLElement} */
 let webpackStatusElem = global.__webpackStatusElem__ || document.getElementById(webpackStatusElemId);
 
 /** @type {{[color: string]: string}} */
@@ -82,7 +82,6 @@ window.addEventListener(`message`, event => {
     if (!webpackStatusElem) {
       webpackStatusElem = document.createElement(`div`);
       webpackStatusElem.setAttribute(`id`, webpackStatusElemId);
-      // @ts-ignore Argument of type 'HTMLElement | null' is not assignable to type Node (we've already done falsey check)
       waitForBody().then(body => body.appendChild(webpackStatusElem));
     }
 
